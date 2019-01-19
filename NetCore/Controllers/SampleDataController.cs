@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using NetCore.Models;
 
 namespace NetCore.Controllers
 {
@@ -13,6 +14,13 @@ namespace NetCore.Controllers
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
+        Data dat = new Data();
+
+        [HttpGet("[action]")]
+        public IEnumerable<Workers> Workers()
+        {
+            return dat.GetAllEmployees();
+        }
 
         [HttpGet("[action]")]
         public IEnumerable<WeatherForecast> WeatherForecasts()

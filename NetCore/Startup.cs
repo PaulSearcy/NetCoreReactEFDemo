@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-
+using Microsoft.EntityFrameworkCore;
+using NetCore.Models;
 namespace NetCore
 {
     public class Startup
@@ -21,7 +22,9 @@ namespace NetCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
+            services.AddDbContext<workingOutAPIContext20160326123516Context>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("mvcmoviecontext"))
+            );
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
