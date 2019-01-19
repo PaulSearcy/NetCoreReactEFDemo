@@ -8,7 +8,7 @@ namespace NetCore.Models
 {
     public class Data
     {
-        workingOutAPIContext20160326123516Context db = new workingOutAPIContext20160326123516Context();
+        APIDBContext db = new APIDBContext();
 
         public IEnumerable<Workers> GetAllEmployees()
         {

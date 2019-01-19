@@ -5,33 +5,39 @@ export class FetchData extends Component {
 
   constructor (props) {
     super(props);
-    this.state = { forecasts: [], loading: true };
+    this.state = { workers: [], loading: true };
 
-    fetch('api/SampleData/WeatherForecasts')
+    fetch('api/SampleData/Workers')
       .then(response => response.json())
       .then(data => {
-        this.setState({ forecasts: data, loading: false });
+        this.setState({ workers: data, loading: false });
       });
   }
 
-  static renderForecastsTable (forecasts) {
+    static renderWorkersTable(workers) {
     return (
       <table className='table table-striped'>
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
+                    <th>employeeId</th>
+                    <th>firstName</th>
+                    <th>lastName</th>
+                    <th>manager</th>
+                    <th>managerId</th>
+                    <th>startDate</th>
+                    <th>techLevel</th>
           </tr>
         </thead>
         <tbody>
-          {forecasts.map(forecast =>
-            <tr key={forecast.dateFormatted}>
-              <td>{forecast.dateFormatted}</td>
-              <td>{forecast.temperatureC}</td>
-              <td>{forecast.temperatureF}</td>
-              <td>{forecast.summary}</td>
+                {workers.map(workers =>
+                    <tr key={workers.employeeId}>
+                        <td>{workers.employeeId}</td>
+                        <td>{workers.firstName}</td>
+                        <td>{workers.lastName}</td>
+                        <td>{workers.manager}</td>
+                        <td>{workers.managerId}</td>
+                        <td>{workers.startDate}</td>
+                        <td>{workers.techLevel}</td>
             </tr>
           )}
         </tbody>
@@ -42,11 +48,11 @@ export class FetchData extends Component {
   render () {
     let contents = this.state.loading
       ? <p><em>Loading...</em></p>
-      : FetchData.renderForecastsTable(this.state.forecasts);
+        : FetchData.renderWorkersTable(this.state.workers);
 
     return (
       <div>
-        <h1>Weather forecast</h1>
+            <h1>workers</h1>
         <p>This component demonstrates fetching data from the server.</p>
         {contents}
       </div>

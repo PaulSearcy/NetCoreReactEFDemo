@@ -22,8 +22,8 @@ namespace NetCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddDbContext<workingOutAPIContext20160326123516Context>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("mvcmoviecontext"))
+            services.AddDbContext<APIDBContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("APIDBContext"))
             );
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
